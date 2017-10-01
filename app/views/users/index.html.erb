@@ -9,8 +9,8 @@
       <th>Email</th>
       <th>Phone</th>
       <th>Password</th>
-      <th>Prefprovider</th>
       <th>Prefamount</th>
+      <th>Prefprovider</th>
       <th>Preflocation</th>
       <th colspan="3"></th>
     </tr>
@@ -23,8 +23,8 @@
         <td><%= user.email %></td>
         <td><%= user.phone %></td>
         <td><%= user.password %></td>
-        <td><%= user.prefProvider %></td>
-        <td><%= user.prefAmount %></td>
+        <td><%= user.prefAmount %> $</td>
+        <td><%= user.prefProvider{ |f| f.to_s.humanize} %></td>
         <td><%= user.prefLocation %></td>
         <td><%= link_to 'Show', user %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>

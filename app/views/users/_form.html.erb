@@ -1,7 +1,7 @@
 <%= form_with(model: user, local: true) do |form| %>
   <% if user.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+      <h2>Sorry, please correct the follwing <%= pluralize(user.errors.count, "error") %> to sign up</h2>
 
       <ul>
       <% user.errors.full_messages.each do |message| %>
@@ -31,20 +31,20 @@
     <%= form.text_field :password, id: :user_password %>
   </div>
 
-  <div class="field">
-    <%= form.label :prefProvider %>
-    <%= form.number_field :prefProvider, id: :user_prefProvider %>
-  </div>
+    <div class="field">
+      <%= form.label 'Preferred  Recharge Amount '%>
+      <%= form.number_field :prefAmount, id: :user_prefAmount %>
+    </div>
 
   <div class="field">
-    <%= form.label :prefAmount %>
-    <%= form.number_field :prefAmount, id: :user_prefAmount %>
+    <%= form.label 'Preferred Wireless Provider' %>
+    <%= form.select :prefProvider, options_for_select(User::PREF_PROVIDER, params[:prefProvider]), include_blank: 'Select your preferred provider.'%>
   </div>
 
-  <div class="field">
-    <%= form.label :prefLocation %>
-    <%= form.number_field :prefLocation, id: :user_prefLocation %>
-  </div>
+    <div class="field">
+      <%= form.label 'Preferred Location' %>
+      <%= form.select :prefLocation, options_for_select(User::PREF_LOCATION, params[:prefLocation]), include_blank: 'Select your preferred pickup location.'%>
+    </div>
 
   <div class="actions">
     <%= form.submit %>
