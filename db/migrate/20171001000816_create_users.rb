@@ -8,7 +8,6 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.integer :prefProvider
       t.integer :prefAmount
       t.integer :prefLocation
-
       t.timestamps
     end
   end
