@@ -1,7 +1,7 @@
-<%= form_with(model: user, local: true) do |form| %>
+<%= form_with(model: user, local: true, class:'col-lg-5', id:'signup-form') do |form| %>
     <% if user.errors.any? %>
         <div id="error_explanation">
-          <h2>Sorry, please correct the follwing <%= pluralize(user.errors.count, "error") %> to sign up</h2>
+          <h2>Sorry, please correct the following <%= pluralize(user.errors.count, "error") %> to sign up</h2>
 
           <ul>
             <% user.errors.full_messages.each do |message| %>
@@ -11,44 +11,38 @@
         </div>
     <% end %>
 
-    <div class="field">
-      <%= form.label :name %>
-      <%= form.text_field :name, id: :user_name %>
+    <div class="field form-group">
+      <%= form.text_field :name, id: :user_name, class:'form-control', type:'text', placeholder:'Full name' %>
     </div>
 
-    <div class="field">
-      <%= form.label :email %>
-      <%= form.text_field :email, id: :user_email %>
+    <div class="field form-group">
+      <%= form.text_field :email, id: :user_email, class:'form-control', type:'email', placeholder:'Email' %>
     </div>
 
-    <div class="field">
-      <%= form.label :phone %>
-      <%= form.text_field :phone, id: :user_phone %>
+    <div class="field form-group">
+      <%= form.text_field :phone, id: :user_phone, class:'form-control', type:'text', placeholder:'Phone number' %>
     </div>
 
-    <div class="field">
-      <%= form.label :password %>
-      <%= form.password_field :password, class:'form-control' %><br/>
+    <div class="small">Choose a password of at least 6 characters</div>
+
+    <div class="field form-group">
+      <%= form.password_field :password, class:'form-control', type:'password', placeholder:'Password' %>
     </div>
 
-    <div class="field">
-      <%= form.label 'Preferred  Recharge Amount ' %>
-      <%= form.number_field :prefAmount, id: :user_prefAmount %>
+    <div class="field form-group">
+      <%= form.number_field :prefAmount, id: :user_prefAmount, class:'form-control', type:'text', placeholder:'Preferred recharge amount' %>
     </div>
 
-    <div class="field">
-      <%= form.label 'Preferred Wireless Provider' %>
+    <div class="field form-group">
       <%= form.select :prefProvider, options_for_select(User::PREF_PROVIDER, params[:prefProvider]), include_blank: 'Select your preferred provider.' %>
     </div>
 
-    <div class="field">
-      <%= form.label 'Preferred Location' %>
+    <div class="field form-group">
       <%= form.select :prefLocation, options_for_select(User::PREF_LOCATION, params[:prefLocation]), include_blank: 'Select your preferred pickup location.' %>
     </div>
 
     <div class="actions">
-      <h2> </h2>
-      <%= form.submit "Sign Up" %>
+      <%= form.submit "Sign Up",  :class=>'btn btn-primary col-lg-12' %>
     </div>
 
 <% end %>
