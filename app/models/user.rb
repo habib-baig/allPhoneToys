@@ -21,4 +21,8 @@ class User < ApplicationRecord
 
   validates :prefLocation, presence: true
 
+  def passwordMatches(enteredPassword)
+    enteredPassword.eql?self.password
+  end
+
 end
