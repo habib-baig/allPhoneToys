@@ -1,0 +1,24 @@
+<% provide(:title, "Log in") %>
+<div class="col-md-5 text-center">
+<%= form_for(:session, url: login_path) do |form| %>
+
+    <h1>Log in</h1>
+
+    <div class="field form-group">
+      <%= form.text_field :email, class:'form-control', type:'email',id:'email', placeholder:'Email' %>
+    </div>
+
+    <div class="field form-group">
+      <%= form.password_field :password, class:'form-control', type:'password',id:'password', placeholder:'Password' %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit "Login",  :class=>'btn btn-primary col-md-12' %>
+    </div>
+
+    <div>Forgot Password?</div>
+    <div class="small">Don't have an account? <%= link_to 'Sign up', new_user_path %></div>
+<% end %>
+
+</div>
+
