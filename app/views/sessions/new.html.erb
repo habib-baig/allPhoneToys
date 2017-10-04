@@ -1,9 +1,7 @@
 <% provide(:title, "Log in") %>
-<div class="col-md-5 text-center">
-<%= form_for(:session, url: login_path) do |form| %>
-
-    <h1>Log in</h1>
-
+<div class="col-lg-12 text-center">
+<%= form_for(:session, html: {class: "col-lg-4", id: "login-form"}, url: login_path) do |form| %>
+    
     <div class="field form-group">
       <%= form.text_field :email, class:'form-control', type:'email',id:'email', placeholder:'Email' %>
     </div>
@@ -13,12 +11,11 @@
     </div>
 
     <div class="actions">
-      <%= form.submit "Login",  :class=>'btn btn-primary col-md-12' %>
+      <%= form.submit "Log in",  :class=>'btn btn-primary form-control' %>
     </div>
 
-    <div>Forgot Password?</div>
-    <div class="small">Don't have an account? <%= link_to 'Sign up', new_user_path %></div>
+    <div class="small text-right"><%= link_to 'Forgot Password?', '#' %></div>
+    <div class="small text-right">Don't have an account? <%= link_to 'Sign up', new_user_path %></div>
 <% end %>
 
 </div>
-
