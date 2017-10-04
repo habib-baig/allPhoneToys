@@ -42,7 +42,11 @@
     </div>
 
     <div class="actions">
-      <%= form.submit "Sign Up",  :class=>'btn btn-primary col-lg-12' %>
+      <% if !current_user %>
+        <%= form.submit "Sign Up",  :class=>'btn btn-primary col-lg-12' %>
+      <% else %>
+        <%= form.submit "Save",  :class=>'btn btn-primary col-lg-12' %>
+      <% end %>
     </div>
 
 <% end %>

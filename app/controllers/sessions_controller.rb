@@ -1,5 +1,9 @@
 class SessionsController < ApplicationController
   def new
+    if current_user
+      user = User.find(session[:user_id])
+      redirect_to user_path(user)
+    end
   end
 
   def create
@@ -7,6 +11,7 @@ class SessionsController < ApplicationController
     @loginError = "";
     #check for a user with the same email id in the database
     if user && user.passwordMatches(params[:session][:password])
+      session[:user_id] = user.id
       log_in user
       redirect_to user
     else
@@ -16,7 +21,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    log_out
-    redirect_to root_url
+    session[:user_id] = nil
+    redirect_to "/"
   end
 end
