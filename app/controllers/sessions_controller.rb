@@ -4,12 +4,13 @@ class SessionsController < ApplicationController
 
   def create
     user = User.find_by(email: params[:session][:email].downcase)
+    @loginError = "";
     #check for a user with the same email id in the database
     if user && user.passwordMatches(params[:session][:password])
       log_in user
       redirect_to user
     else
-      flash.now[:notice] = 'Invalid email/password combination'
+      @loginError = 'Invalid email/password'
       render 'new'
     end
   end
