@@ -11,13 +11,8 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <%= link_to new_user_path do %>
-            <span class="glyphicon glyphicon-user"></span> Sign Up</a>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to login_path do %>
-            <span class="glyphicon glyphicon-log-in"></span> Log in</a>
+          <%= link_to logout_path, method: "delete" do %>
+            <span class="glyphicon glyphicon-user"></span> Log out</a>
           <% end %>
         </li>
       </ul>
