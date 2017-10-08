@@ -5,9 +5,9 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :email
       t.integer :phone, :limit => 8
       t.string :password
-      t.string :prefProvider
+      t.integer :prefProvider
       t.integer :prefAmount
-      t.string :prefLocation
+      t.integer :prefLocation
       t.timestamps
     end
   end
