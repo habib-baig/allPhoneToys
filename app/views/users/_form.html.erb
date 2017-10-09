@@ -34,11 +34,11 @@
     </div>
 
     <div class="field form-group">
-      <%= form.select :prefProvider, options_for_select(User::PREF_PROVIDER, params[:prefProvider]), {prompt: 'Select your preferred provider.'}, {class:'form-control'} %>
+      <%= form.select :prefProvider, options_for_select(User.prefProviders.map {|k, v| [k.humanize.capitalize, k]}), {prompt: 'Select your preferred service provider.'}, {class:'form-control'}  %>
     </div>
 
     <div class="field form-group">
-      <%= form.select :prefLocation, options_for_select(User::PREF_LOCATION, params[:prefLocation]), {prompt: 'Select your preferred pickup location.'}, {class:'form-control'} %>
+      <%= form.select :prefLocation, options_for_select(User.prefLocations.map {|k, v| [k.humanize.capitalize, k]}), {prompt: 'Select your preferred pickup location.'}, {class:'form-control'}  %>
     </div>
 
     <div class="actions">
