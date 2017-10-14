@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  amount: 1
+  phoneNumber: 1
+  provider: 1
+  location: 1
+  status: 1
+  scheduledPickupStartDT: 2017-10-14 16:44:40
+  scheduledPickupEndDT: 2017-10-14 16:44:40
+  messagedPickupDT: 2017-10-14 16:44:40
+  pickedUpDT: 2017-10-14 16:44:40
+  rechargeDueDT: 2017-10-14 16:44:40
+  rechargedDT: 2017-10-14 16:44:40
+  remarks: MyText
+
+two:
+  amount: 1
+  phoneNumber: 1
+  provider: 1
+  location: 1
+  status: 1
+  scheduledPickupStartDT: 2017-10-14 16:44:40
+  scheduledPickupEndDT: 2017-10-14 16:44:40
+  messagedPickupDT: 2017-10-14 16:44:40
+  pickedUpDT: 2017-10-14 16:44:40
+  rechargeDueDT: 2017-10-14 16:44:40
+  rechargedDT: 2017-10-14 16:44:40
+  remarks: MyText

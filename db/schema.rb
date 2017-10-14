@@ -10,7 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171001000816) do
+ActiveRecord::Schema.define(version: 20171014214440) do
+
+  create_table "transactions", force: :cascade do |t|
+    t.integer "amount"
+    t.integer "phoneNumber"
+    t.integer "provider"
+    t.integer "location"
+    t.integer "status"
+    t.datetime "scheduledPickupStartDT"
+    t.datetime "scheduledPickupEndDT"
+    t.datetime "messagedPickupDT"
+    t.datetime "pickedUpDT"
+    t.datetime "rechargeDueDT"
+    t.datetime "rechargedDT"
+    t.text "remarks"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "name"

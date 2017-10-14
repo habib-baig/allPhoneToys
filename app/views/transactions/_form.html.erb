@@ -1,0 +1,77 @@
+<%= form_with(model: transaction, local: true) do |form| %>
+  <% if transaction.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(transaction.errors.count, "error") %> prohibited this transaction from being saved:</h2>
+
+      <ul>
+      <% transaction.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :amount %>
+    <%= form.number_field :amount, id: :transaction_amount %>
+  </div>
+
+  <div class="field">
+    <%= form.label :phoneNumber %>
+    <%= form.number_field :phoneNumber, id: :transaction_phoneNumber %>
+  </div>
+
+  <div class="field">
+    <%= form.label :provider %>
+    <%= form.number_field :provider, id: :transaction_provider %>
+  </div>
+
+  <div class="field">
+    <%= form.label :location %>
+    <%= form.number_field :location, id: :transaction_location %>
+  </div>
+
+  <div class="field">
+    <%= form.label :status %>
+    <%= form.number_field :status, id: :transaction_status %>
+  </div>
+
+  <div class="field">
+    <%= form.label :scheduledPickupStartDT %>
+    <%= form.datetime_select :scheduledPickupStartDT, id: :transaction_scheduledPickupStartDT %>
+  </div>
+
+  <div class="field">
+    <%= form.label :scheduledPickupEndDT %>
+    <%= form.datetime_select :scheduledPickupEndDT, id: :transaction_scheduledPickupEndDT %>
+  </div>
+
+  <div class="field">
+    <%= form.label :messagedPickupDT %>
+    <%= form.datetime_select :messagedPickupDT, id: :transaction_messagedPickupDT %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pickedUpDT %>
+    <%= form.datetime_select :pickedUpDT, id: :transaction_pickedUpDT %>
+  </div>
+
+  <div class="field">
+    <%= form.label :rechargeDueDT %>
+    <%= form.datetime_select :rechargeDueDT, id: :transaction_rechargeDueDT %>
+  </div>
+
+  <div class="field">
+    <%= form.label :rechargedDT %>
+    <%= form.datetime_select :rechargedDT, id: :transaction_rechargedDT %>
+  </div>
+
+  <div class="field">
+    <%= form.label :remarks %>
+    <%= form.text_area :remarks, id: :transaction_remarks %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
