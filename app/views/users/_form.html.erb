@@ -11,29 +11,29 @@
         </div>
     <% end %>
 
-    <div class="field form-group">
+    <div class="field form-group-condensed">
       <%= form.text_field :name, id: :user_name, class:'form-control', type:'text', placeholder:'Full name' %>
     </div>
 
-    <div class="field form-group">
+    <div class="field form-group-condensed">
       <%= form.text_field :email, id: :user_email, class:'form-control', type:'email', placeholder:'Email' %>
     </div>
 
-    <div class="field form-group">
+    <div class="field form-group-condensed">
       <%= form.text_field :phone, id: :user_phone, class:'form-control', type:'text', placeholder:'Phone number' %>
     </div>
 
     <div class="small">Choose a password of at least 6 characters</div>
 
-    <div class="field form-group">
+    <div class="field form-group-condensed">
       <%= form.password_field :password, class:'form-control', type:'password', placeholder:'Password' %>
     </div>
 
-    <div class="field form-group">
+    <div class="field form-group-condensed">
       <%= form.number_field :prefAmount, id: :user_prefAmount, class:'form-control', type:'text', placeholder:'Preferred recharge amount' %>
     </div>
 
-    <div class="field form-group">
+    <div class="field form-group-condensed">
       <%= form.select :prefProvider, options_for_select(User.prefProviders.map {|k, v| [k.humanize.capitalize, k]}), {prompt: 'Select your preferred service provider.'}, {class:'form-control'}  %>
     </div>
 
@@ -43,9 +43,9 @@
 
     <div class="actions">
       <% if !current_user %>
-        <%= form.submit "Sign Up",  :class=>'btn btn-primary col-lg-12' %>
+        <%= form.submit "Sign Up",  :class=>'btn btn-primary col-lg-12 orange-button' %>
       <% else %>
-        <%= form.submit "Save",  :class=>'btn btn-primary col-lg-12' %>
+        <%= form.submit "Save",  :class=>'btn btn-primary col-lg-12 orange-button' %>
       <% end %>
     </div>
 
