@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @transaction.amount %>
+</p>
+
+<p>
+  <strong>Phonenumber:</strong>
+  <%= @transaction.phoneNumber %>
+</p>
+
+<p>
+  <strong>Provider:</strong>
+  <%= @transaction.provider %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @transaction.location %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @transaction.status %>
+</p>
+
+<p>
+  <strong>Scheduledpickupstartdt:</strong>
+  <%= @transaction.scheduledPickupStartDT %>
+</p>
+
+<p>
+  <strong>Scheduledpickupenddt:</strong>
+  <%= @transaction.scheduledPickupEndDT %>
+</p>
+
+<p>
+  <strong>Messagedpickupdt:</strong>
+  <%= @transaction.messagedPickupDT %>
+</p>
+
+<p>
+  <strong>Pickedupdt:</strong>
+  <%= @transaction.pickedUpDT %>
+</p>
+
+<p>
+  <strong>Rechargeduedt:</strong>
+  <%= @transaction.rechargeDueDT %>
+</p>
+
+<p>
+  <strong>Rechargeddt:</strong>
+  <%= @transaction.rechargedDT %>
+</p>
+
+<p>
+  <strong>Remarks:</strong>
+  <%= @transaction.remarks %>
+</p>
+
+<%= link_to 'Edit', edit_transaction_path(@transaction) %> |
+<%= link_to 'Back', transactions_path %>
