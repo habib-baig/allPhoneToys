@@ -15,6 +15,9 @@ class TransactionsController < ApplicationController
   # GET /transactions/new
   def new
     @transaction = Transaction.new
+    @locations = ['College_Main','Cherry_Hollows']
+    @phoneNumber =  User.find(session[:user_id]).phone
+    @provider = ['Lyca']
   end
 
   # GET /transactions/1/edit
