@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  has_many :transactions
+
+  validates_uniqueness_of :email
 
   validates :name,  presence: true, length: { maximum: 50 }
 

@@ -10,7 +10,7 @@
   </head>
 
   <body>
-    <% if !current_user %>
+    <% if !current_user && !current_admin %>
       <%= render "layouts/header" %>
     <% else %>
       <%= render "layouts/authenticated_header" %>

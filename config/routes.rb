@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :admins
   resources :transactions
   get 'sessions/new'
   resources :users
@@ -11,4 +12,5 @@ Rails.application.routes.draw do
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
+  get '/adminDashboard', to: 'admins#dashboard'
 end
