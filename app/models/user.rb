@@ -17,11 +17,16 @@ class User < ApplicationRecord
   enum prefProvider: { Lyca: 1 , T_My_Mobile: 2 ,Verizon: 3 }
   enum prefLocation: { College_Main: 1 , Cherry_Hollows: 2 , Gardens: 3 , Scandia: 4 }
 
-
   def passwordMatches(enteredPassword)
     enteredPassword.eql?self.password
   end
 
+  scope :user_name, -> (name) { where "lower(name) like ?", "%#{name.downcase}%" }
+  scope :user_email, -> (email) { where "lower(email) like ?", "%#{email.downcase}%" }
+  scope :user_phone, -> (phone) { where "phone = ?", phone }
+  scope :user_pref_amount, -> (prefAmount) { where "prefAmount = ?", prefAmount }
+  scope :user_pref_provider, -> (prefProvider) { where "prefProvider = ?", prefProvider }
+  scope :user_pref_location, -> (prefLocation) { where "prefLocation = ?", prefLocation }
 
 
 end
