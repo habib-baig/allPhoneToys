@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+  has_many :transactions
+
+  validates_uniqueness_of :email
 
   validates :name,  presence: true, length: { maximum: 50 }
 
@@ -13,8 +16,6 @@ class User < ApplicationRecord
 
   enum prefProvider: { Lyca: 1 , T_My_Mobile: 2 ,Verizon: 3 }
   enum prefLocation: { College_Main: 1 , Cherry_Hollows: 2 , Gardens: 3 , Scandia: 4 }
-
-
 
 
   def passwordMatches(enteredPassword)

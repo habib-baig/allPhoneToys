@@ -16,10 +16,16 @@
  @import "bootstrap";
  @import "users";
  @import "sessions";
+ @import "transactions";
 
 body, html {
   height: 95%;
   display: grid;
+  background: #eee;
+}
+
+textarea {
+  resize: none;
 }
 
 .form-group {
