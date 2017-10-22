@@ -4,7 +4,24 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    #@users = User.all
+
+    session[:user_name] = params[:name]
+    session[:user_email] = params[:email]
+    session[:user_phone] = params[:phone]
+    session[:user_pref_amount] = params[:prefAmount]
+    session[:user_pref_provider] = params[:prefProvider]
+    session[:user_pref_location] = params[:prefLocation]
+
+    @users = User.where(nil) # creates an anonymous scope
+    @users = @users.user_name(session[:user_name]) if session[:user_name].present?
+    @users = @users.user_email(session[:user_email]) if session[:user_email].present?
+    @users = @users.user_phone(session[:user_phone]) if session[:user_phone].present?
+    @users = @users.user_pref_amount(session[:user_pref_amount]) if session[:user_pref_amount].present?
+    @users = @users.user_pref_provider(session[:user_pref_provider]) if session[:user_pref_provider].present?
+    @users = @users.user_pref_location(session[:user_pref_location]) if session[:user_pref_location].present?
+
+    
   end
 
   # GET /users/1
@@ -73,3 +90,6 @@ class UsersController < ApplicationController
       params.require(:user).permit(:name, :email, :phone, :password, :prefProvider, :prefAmount, :prefLocation)
     end
 end
+
+
+
