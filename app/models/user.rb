@@ -18,8 +18,6 @@ class User < ApplicationRecord
   enum prefLocation: { College_Main: 1 , Cherry_Hollows: 2 , Gardens: 3 , Scandia: 4 }
 
 
-
-
   def passwordMatches(enteredPassword)
     enteredPassword.eql?self.password
   end
