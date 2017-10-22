@@ -1,4 +1,4 @@
-<%= form_with(model: transaction, local: true) do |form| %>
+<%= form_with(model: transaction, local: true, class: 'col-lg-6', id: 'schedule-form') do |form| %>
   <% if transaction.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(transaction.errors.count, "error") %> prohibited this transaction from being saved:</h2>
@@ -11,67 +11,35 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :amount %>
-    <%= form.number_field :amount, id: :transaction_amount %>
+  <div class="field form-group">
+    <%= form.number_field :amount, id: :transaction_amount, class: 'form-control', placeholder: '$ Amount' %>
   </div>
 
-  <div class="field">
-    <%= form.label :phoneNumber %>
-    <%= form.number_field :phoneNumber, id: :transaction_phoneNumber %>
+  <div class="field form-group">
+    <%= form.number_field :phoneNumber, :value=>@current_user.phone, id: :transaction_phoneNumber, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :provider %>
-    <%= form.number_field :provider, id: :transaction_provider %>
+  <div class="field form-group">
+    <%= form.select :provider, options_for_select(Transaction.providers.map {|k, v| [k.humanize.capitalize, k]}, @current_user.prefProvider), {prompt: 'Select your service provider'}, {id: :transaction_provider, class: 'form-control'} %>
   </div>
 
-  <div class="field">
-    <%= form.label :location %>
-    <%= form.number_field :location, id: :transaction_location %>
+  <div class="field form-group">
+    <%= form.select :provider, options_for_select(Transaction.locations.map {|k, v| [k.humanize.capitalize, k]}, @current_user.prefLocation), {prompt: 'Select location'}, {id: :transaction_location, class: 'form-control'} %>
   </div>
 
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.number_field :status, id: :transaction_status %>
+  <div class="field form-group">
+    <%= form.datetime_select :scheduledPickupStartDT, id: :transaction_scheduledPickupStartDT, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :scheduledPickupStartDT %>
-    <%= form.datetime_select :scheduledPickupStartDT, id: :transaction_scheduledPickupStartDT %>
+  <div class="field form-group">
+    <%= form.datetime_select :scheduledPickupEndDT, id: :transaction_scheduledPickupEndDT, class: 'form-control' %>
   </div>
 
-  <div class="field">
-    <%= form.label :scheduledPickupEndDT %>
-    <%= form.datetime_select :scheduledPickupEndDT, id: :transaction_scheduledPickupEndDT %>
+  <div class="field form-group">
+    <%= form.text_area :remarks, id: :transaction_remarks, class: 'form-control', placeholder: 'Any comments/remarks...', rows: '4', cols: "30" %>
   </div>
 
-  <div class="field">
-    <%= form.label :messagedPickupDT %>
-    <%= form.datetime_select :messagedPickupDT, id: :transaction_messagedPickupDT %>
-  </div>
-
-  <div class="field">
-    <%= form.label :pickedUpDT %>
-    <%= form.datetime_select :pickedUpDT, id: :transaction_pickedUpDT %>
-  </div>
-
-  <div class="field">
-    <%= form.label :rechargeDueDT %>
-    <%= form.datetime_select :rechargeDueDT, id: :transaction_rechargeDueDT %>
-  </div>
-
-  <div class="field">
-    <%= form.label :rechargedDT %>
-    <%= form.datetime_select :rechargedDT, id: :transaction_rechargedDT %>
-  </div>
-
-  <div class="field">
-    <%= form.label :remarks %>
-    <%= form.text_area :remarks, id: :transaction_remarks %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+  <div class="actions form-group">
+    <%= form.submit "Schedule",  :class=>'btn btn-primary col-lg-12 orange-button' %>
   </div>
 <% end %>
