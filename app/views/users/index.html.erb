@@ -1,15 +1,52 @@
 
 <h1>Users</h1>
 
+<%= form_with(url: user_index_path, local: true) do |form| %>
+
+    <table>
+      <tr>
+        <td> <%= form.label :"Name (contains)" %>
+          <%= form.text_field :name, id: :name, value: session[:user_name] %> </td>
+
+        <td><%= form.label :"Email (contains)" %>
+          <%= form.text_field :email, id: :email, value: session[:user_email] %> </td>
+
+        <td>
+          <%= form.label :"Phone number (contains)" %>
+          <%= form.text_field :phone, id: :phone, value: session[:user_phone] %>
+        </td>
+
+        <td> <%= form.label :"Preferred Amount " %>
+          <%= form.number_field :prefAmount, id: :prefAmount, value: session[:user_pref_amount] %> </td>
+
+
+        <td>
+          <%= form.label :"Preferred Provider" %>
+          <%= form.text_field :prefProvider, id: :prefProvider, value: session[:user_pref_provider] %>
+        </td>
+
+        <td>
+          <%= form.label :"Preferred Location" %>
+          <%= form.text_field :prefLocation, id: :prefLocation, value: session[:user_pref_location] %>
+        </td>
+
+      </tr>
+    </table>
+
+    <div class="actions">
+      <%= form.submit "Apply"%>
+    </div>
+<% end %>
+
 <table class="table">
   <thead>
     <tr>
       <th>Name</th>
       <th>Email</th>
       <th>Phone</th>
-      <th>Prefamount</th>
-      <th>Prefprovider</th>
-      <th>Preflocation</th>
+      <th>Preferred Amount</th>
+      <th>Preferred Provider</th>
+      <th>Preferred location</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -23,9 +60,6 @@
         <td><%= user.prefAmount %> $</td>
         <td><%= user.prefProvider{ |f| f.to_s.humanize} %></td>
         <td><%= user.prefLocation %></td>
-        <td><%= link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -33,4 +67,3 @@
 
 <br>
 
-<%= link_to 'New User', new_user_path %>
