@@ -16,7 +16,6 @@ class TransactionsController < ApplicationController
   def new
     @transaction = Transaction.new
     @current_user = User.find(session[:user_id])
-    @phoneNumber =  @current_user.phone
   end
 
   # GET /transactions/1/edit
