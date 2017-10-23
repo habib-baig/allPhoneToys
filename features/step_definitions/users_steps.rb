@@ -4,6 +4,33 @@ When /^I sign in as "(.*)" and "(.*)"$/ do |email, password|
   click_button 'Log in'
 end
 
+Given /^I am signed in$/ do
+  visit '/'
+  click_link 'Sign Up'
+  fill_in 'user_name', :with => 'xyz'
+  fill_in 'user_email', :with => 'abc@test.com'
+  fill_in 'user_phone', :with => '9876543210'
+  fill_in 'user_password', :with => 'qwerty'
+  fill_in 'user_prefAmount', :with => '23'
+  click_button 'Sign Up'
+  if page.respond_to? :should
+    page.should have_content('User was successfully created.')
+  else
+    assert page.has_content?('User was successfully created.')
+  end
+  fill_in 'email', :with => 'abc@test.com'
+  fill_in 'password', :with => 'qwerty'
+  click_button 'Log in'
+  
+end
+
+Given /^I am signed in as an admin$/ do
+  visit '/'
+  fill_in 'email', :with => 'shaik@gmail.com'
+  fill_in 'password', :with => 'shaik'
+  click_button 'Log in'
+end
+
 When /^I sign with invalid email as "(.*)"$/ do |email|
   fill_in 'email', :with => "#{email}"
   click_button 'Log in'
@@ -15,6 +42,10 @@ end
 
 When /^(?:|I )fill in "([^"]*)" with "([^"]*)"$/ do |field, value|
   fill_in(field, :with => value)
+end
+
+And /^I fill in the select field "([^"]*)" with "([^"]*)"$/ do |field, value|
+  select value, :from => field
 end
 
 When /^(?:|I )follow "([^"]*)"$/ do |link|
@@ -32,3 +63,4 @@ Then /^(?:|I )should see "([^"]*)"$/ do |text|
     assert page.has_content?(text)
   end
 end
+
