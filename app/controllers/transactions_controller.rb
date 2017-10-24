@@ -16,7 +16,6 @@ class TransactionsController < ApplicationController
   def new
     @transaction = Transaction.new
     @current_user = User.find(session[:user_id])
-    @phoneNumber =  @current_user.phone
   end
 
   # GET /transactions/1/edit
@@ -27,6 +26,7 @@ class TransactionsController < ApplicationController
   # POST /transactions.json
   def create
     @transaction = Transaction.new(transaction_params)
+    @transaction.update(user_id: session[:user_id])
 
     respond_to do |format|
       if @transaction.save
