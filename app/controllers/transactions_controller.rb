@@ -4,8 +4,6 @@ class TransactionsController < ApplicationController
   # GET /transactions
   # GET /transactions.json
   def index
-    #@transactions = Transaction.all
-
     session[:trans_user_name              ] = params[:name                      ]
     session[:trans_amount                 ] = params[:amount                    ]
     session[:trans_phoneNumber            ] = params[:phoneNumber               ]
@@ -19,7 +17,6 @@ class TransactionsController < ApplicationController
     session[:trans_rechargeDueDT          ] = params[:rechargeDueDT             ]
     session[:trans_rechargedDT            ] = params[:rechargedDT               ]
     session[:trans_remarks                ] = params[:remarks                   ]
-       
 
     @transactions = Transaction.where(nil) # creates an anonymous scope
     @transactions = @transactions.trans_user_name(session[:trans_user_name]) if session[:trans_user_name].present?
