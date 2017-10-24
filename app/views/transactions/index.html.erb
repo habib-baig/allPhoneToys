@@ -8,7 +8,7 @@
     <table>
       <tr>
         <td> <%= form.label :"Name (contains)" %>
-          <%= form.text_field :name, id: :name, value: session[:user_name] %> </td>
+          <%= form.text_field :name, id: :name, value: session[:trans_user_name] %> </td>
 
         <td><%= form.label :"Amount (contains)" %>
           <%= form.text_field :amount, id: :amount, value: session[:trans_amount] %> </td>

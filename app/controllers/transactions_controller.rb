@@ -19,7 +19,7 @@ class TransactionsController < ApplicationController
     session[:trans_remarks                ] = params[:remarks                   ]
 
     @transactions = Transaction.where(nil) # creates an anonymous scope
-    @transactions = @transactions.trans_user_name(session[:trans_user_name]) if session[:trans_user_name].present?
+    @transactions = @transactions.trans_user_name(session[:trans_user_name])  if session[:trans_user_name].present?
     @transactions = @transactions.trans_amount(session[:trans_amount]) if session[:trans_amount].present?
     @transactions = @transactions.trans_phoneNumber(session[:trans_phoneNumber]) if session[:trans_phoneNumber].present?
     @transactions = @transactions.trans_provider(session[:trans_provider]) if session[:trans_provider].present?

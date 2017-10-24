@@ -4,7 +4,7 @@ class Transaction < ApplicationRecord
   enum locations: { College_Main: 1 , Cherry_Hollows: 2 , Gardens: 3 , Scandia: 4 }
 
 
-  scope :trans_user_name                , -> (name) { joins(:user ).where( "lower(name) like ?", "%#{name.downcase}%" ) }
+  scope :trans_user_name                 , -> (name) { joins(:user ).where( "lower(name) like ?", "%#{name.downcase}%" ) }
   scope :trans_amount                    , -> (amount                          ) { where "amount                       = ?", amount                       }
   scope :trans_phoneNumber               , -> (phoneNumber                     ) { where "phoneNumber like               ?", "%#{phoneNumber}%"           }
   scope :trans_provider                  , -> (provider                        ) { where "provider                     = ?", provider                     }
