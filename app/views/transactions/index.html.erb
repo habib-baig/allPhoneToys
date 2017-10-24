@@ -2,7 +2,80 @@
 
 <h1>Transactions</h1>
 
-<table>
+
+<%= form_with(url: user_index_path, local: true) do |form| %>
+
+    <table>
+      <tr>
+        <td> <%= form.label :"Name (contains)" %>
+          <%= form.text_field :name, id: :name, value: session[:trans_user_name] %> </td>
+
+        <td><%= form.label :"Amount (contains)" %>
+          <%= form.text_field :amount, id: :amount, value: session[:trans_amount] %> </td>
+
+        <td>
+          <%= form.label :"Phone number (contains)" %>
+          <%= form.text_field :phoneNumber, id: :phoneNumber, value: session[:trans_phoneNumber] %>
+        </td>
+
+        <td><%= form.label :"Transaction Status (contains)" %>
+          <%= form.text_field :status, id: :status, value: session[:trans_status] %> </td>
+
+
+      </tr>
+
+
+      <tr>
+        <td> <%= form.label :"Location (contains)" %>
+          <%= form.text_field :location, id: :location, value: session[:trans_location] %> </td>
+
+
+        <td>
+          <%= form.label :"Provider (contains)" %>
+          <%= form.number_field :provider, id: :provider, value: session[:trans_provider] %>
+        </td>
+
+
+        <td>
+          <%= form.label :"Scheduled Pickup Start DateTime" %>
+          <%= form.text_field :scheduledPickupStartDT, id: :scheduledPickupStartDT, value: session[:trans_scheduledPickupStartDT] %>
+        </td>
+
+        <td> <%= form.label :"Scheduled Pickup End DateTime " %>
+          <%= form.number_field :scheduledPickupEndDT, id: :scheduledPickupEndDT, value: session[:trans_scheduledPickupEndDT] %> </td>
+
+      </tr>
+
+
+
+      <tr>
+        <td> <%= form.label :"Messaged Pickup DateTime " %>
+          <%= form.text_field :messagedPickupDT, id: :messagedPickupDT, value: session[:trans_messagedPickupDT] %> </td>
+
+        <td><%= form.label :"Picked Up DateTime " %>
+          <%= form.text_field :pickedUpDT, id: :pickedUpDT, value: session[:trans_pickedUpDT] %> </td>
+
+        <td>
+          <%= form.label :"Recharge Due DateTime " %>
+          <%= form.text_field :rechargeDueDT, id: :rechargeDueDT, value: session[:trans_rechargeDueDT] %>
+        </td>
+
+        <td> <%= form.label :"Recharged DateTime  " %>
+          <%= form.number_field :rechargedDT, id: :rechargedDT, value: session[:trans_rechargedDT] %> </td>
+
+      </tr>
+
+    </table>
+
+    <h1>   </h1>
+    <div class="actions">
+      <%= form.submit "Apply"%>
+    </div>
+
+
+<% end %>
+
+<table class="table">
   <thead>
     <tr>
       <th>Name</th>

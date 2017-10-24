@@ -58,7 +58,7 @@
         <td><%= user.email %></td>
         <td><%= user.phone %></td>
         <td><%= user.prefAmount %> $</td>
-        <td><%= user.prefProvider{ |f| f.to_s.humanize} %></td>
+        <td><%= user.prefProvider %></td>
         <td><%= user.prefLocation %></td>
       </tr>
     <% end %>
