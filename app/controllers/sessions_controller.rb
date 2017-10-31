@@ -4,7 +4,8 @@ class SessionsController < ApplicationController
       user = User.find(session[:user_id])
       redirect_to user_path(user)
     elsif current_admin
-      redirect_to adminDashboard_path
+      admin = Admin.find(session[:admin_id])
+      redirect_to admin_path(admin)
     end
   end
 

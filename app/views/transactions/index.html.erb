@@ -3,38 +3,38 @@
 <h1>Transactions</h1>
 
 
-<%= form_with(url: transaction_index_path, local: true) do |form| %>
+<%= form_with(url: user_index_path, local: true) do |form| %>
 
     <table>
       <tr>
         <td> <%= form.label :"Name (contains)" %>
           <%= form.text_field :name, id: :name, value: session[:trans_user_name] %> </td>
 
-        <td><%= form.label :"Amount" %>
+        <td><%= form.label :"Amount (contains)" %>
           <%= form.text_field :amount, id: :amount, value: session[:trans_amount] %> </td>
 
         <td>
-          <%= form.label :"Phone number" %>
+          <%= form.label :"Phone number (contains)" %>
           <%= form.text_field :phoneNumber, id: :phoneNumber, value: session[:trans_phoneNumber] %>
         </td>
+
+        <td><%= form.label :"Transaction Status (contains)" %>
+          <%= form.text_field :status, id: :status, value: session[:trans_status] %> </td>
+
 
       </tr>
 
 
       <tr>
-
-        <td><%= form.label :"Transaction Status" %>
-          <%= form.text_field :status, id: :status, value: session[:trans_status] %> </td>
-        <td> <%= form.label :"Location" %>
+        <td> <%= form.label :"Location (contains)" %>
           <%= form.text_field :location, id: :location, value: session[:trans_location] %> </td>
 
 
         <td>
-          <%= form.label :"Provider" %>
+          <%= form.label :"Provider (contains)" %>
           <%= form.number_field :provider, id: :provider, value: session[:trans_provider] %>
         </td>
 
-        <% if false %>
 
         <td>
           <%= form.label :"Scheduled Pickup Start DateTime" %>
@@ -63,7 +63,6 @@
         <td> <%= form.label :"Recharged DateTime  " %>
           <%= form.number_field :rechargedDT, id: :rechargedDT, value: session[:trans_rechargedDT] %> </td>
 
-        <% end %>
       </tr>
 
     </table>
@@ -85,8 +84,6 @@
       <th>Provider</th>
       <th>Location</th>
       <th>Status</th>
-
-      <% if false %>
       <th>Scheduledpickupstartdt</th>
       <th>Scheduledpickupenddt</th>
       <th>Messagedpickupdt</th>
@@ -95,7 +92,6 @@
       <th>Rechargeddt</th>
       <th>Remarks</th>
       <th colspan="3"></th>
-      <% end %>
     </tr>
   </thead>
 
@@ -108,7 +104,6 @@
         <td><%= transaction.provider %></td>
         <td><%= transaction.location %></td>
         <td><%= transaction.status %></td>
-        <% if false %>
         <td><%= transaction.scheduledPickupStartDT %></td>
         <td><%= transaction.scheduledPickupEndDT %></td>
         <td><%= transaction.messagedPickupDT %></td>
@@ -116,14 +111,11 @@
         <td><%= transaction.rechargeDueDT %></td>
         <td><%= transaction.rechargedDT %></td>
         <td><%= transaction.remarks %></td>
-  <% end %>
 
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<%= link_to 'Back', adminDashboard_path %>
 
 <br>
 
