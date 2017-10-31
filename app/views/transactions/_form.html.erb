@@ -20,11 +20,11 @@
   </div>
 
   <div class="field form-group">
-    <%= form.select :provider, options_for_select(Transaction.providers.map {|k, v| [k.humanize.capitalize, k]}, @current_user.prefProvider), {prompt: 'Select your service provider'}, {id: :transaction_provider, class: 'form-control'} %>
+    <%= form.select :provider, options_for_select(Transaction.providers.map {|k, v| [k.humanize.capitalize, v]}, @current_user.prefProvider), {prompt: 'Select your service provider'}, {id: :transaction_provider, class: 'form-control'} %>
   </div>
 
   <div class="field form-group">
-    <%= form.select :provider, options_for_select(Transaction.locations.map {|k, v| [k.humanize.capitalize, k]}, @current_user.prefLocation), {prompt: 'Select location'}, {id: :transaction_location, class: 'form-control'} %>
+    <%= form.select :location, options_for_select(Transaction.locations.map {|k, v| [k.humanize.capitalize, v]}, @current_user.prefLocation), {prompt: 'Select location'}, {id: :transaction_location, class: 'form-control'} %>
   </div>
 
   <div class="field form-group">

@@ -1,6 +1,9 @@
 
 <h1>Users</h1>
 
+
+<% if false %>
+
 <%= form_with(url: user_index_path, local: true) do |form| %>
 
     <table>
@@ -38,6 +41,8 @@
     </div>
 <% end %>
 
+<% end %>
+
 <table class="table">
   <thead>
     <tr>
@@ -64,6 +69,8 @@
     <% end %>
   </tbody>
 </table>
+
+<%= link_to 'Back', adminDashboard_path %>
 
 <br>
 

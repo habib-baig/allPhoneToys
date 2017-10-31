@@ -13,6 +13,6 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
   get '/adminDashboard', to: 'admins#dashboard'
-  post   '/',   to: 'users#index', as: 'user_index'
+  post   '/',   to: 'transactions#index', as: 'transaction_index'
 
 end
