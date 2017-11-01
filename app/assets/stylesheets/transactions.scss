@@ -18,3 +18,18 @@ span.new-transaction {
   padding-left: 10px;
   padding-right: 10px;
 }
+
+.transactions a.current-transactions, .transactions a.current-transactions:hover {
+  background-color: #ffb204;
+  color: #181818;
+}
+
+.pickups a.current-pickups, .pickups a.current-pickups:hover {
+  background-color: #ffb204;
+  color: #181818;
+}
+
+.recharges a.current-recharges, .recharges a.current-recharges:hover {
+  background-color: #ffb204;
+  color: #181818;
+}

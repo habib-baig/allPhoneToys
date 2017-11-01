@@ -17,21 +17,21 @@
             <% end %>
           </li>
         <% end %>
-        <li>
-          <%= link_to transactions_path, :class => cp(transactions_path) do %>
+        <li class="transactions">
+          <%= link_to transactions_path, :class => cp_transactions(transactions_path) do %>
             <% if session[:user_id] %> My transactions
             <% else %> Transactions
             <% end %>
           <% end %>
         </li>
         <% if !session[:user_id] %>
-          <li>
-            <%= link_to "#" do %>
+          <li class="pickups">
+            <%= link_to transactions_path(:filter => 'pickups'), :class => cp_transactions(transactions_path) do %>
               Pickups
             <% end %>
           </li>
-          <li>
-            <%= link_to "#" do %>
+          <li class="recharges">
+            <%= link_to transactions_path(:filter => 'recharges'), :class => cp_transactions(transactions_path) do %>
               Recharges
             <% end %>
           </li>
