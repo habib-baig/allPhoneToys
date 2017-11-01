@@ -1,0 +1,20 @@
+<%= form_with(model: location, local: true, class: 'col-lg-5', id: 'location-form') do |form| %>
+  <% if location.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(location.errors.count, "error") %> prohibited this location from being saved:</h2>
+
+      <ul>
+      <% location.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group">
+    <%= form.text_field :location, id: :location_location, class: 'form-control', placeholder: 'Location' %>
+  </div>
+  <div class="actions form-group">
+    <%= form.submit "Add Location",  :class=>'btn col-lg-12 orange-button' %>
+  </div>
+<% end %>
