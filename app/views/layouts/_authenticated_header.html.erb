@@ -11,57 +11,56 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
         <% if !session[:user_id] %>
-        <li>
-          <%= link_to users_path do %>
-            All users</a>
-          <% end %>
-        </li>
+          <li>
+            <%= link_to users_path do %>
+              All users
+            <% end %>
+          </li>
         <% end %>
         <li>
           <%= link_to transactions_path do %>
             <% if session[:user_id] %> My transactions
             <% else %> Transactions
             <% end %>
-          </a>
           <% end %>
         </li>
         <% if !session[:user_id] %>
-        <li>
-          <%= link_to "#" do %>
-            Pickups</a>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to "#" do %>
-            Recharges</a>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to "#" do %>
-            Locations</a>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to "#" do %>
-            Providers</a>
-          <% end %>
-        </li>
+          <li>
+            <%= link_to "#" do %>
+              Pickups
+            <% end %>
+          </li>
+          <li>
+            <%= link_to "#" do %>
+              Recharges
+            <% end %>
+          </li>
+          <li>
+            <%= link_to "#" do %>
+              Locations
+            <% end %>
+          </li>
+          <li>
+            <%= link_to "#" do %>
+              Providers
+            <% end %>
+          </li>
         <% end %>
         <% if session[:user_id] %>
-        <li>
-          <%= link_to schedulePickup_path do %>
-            Schedule a pickup</a>
-          <% end %>
-        </li>
-        <li>
-          <%= link_to edit_user_path(current_user) do %>
-            Edit profile</a>
-          <% end %>
-        </li>
+          <li>
+            <%= link_to schedulePickup_path do %>
+              Schedule a pickup
+            <% end %>
+          </li>
+          <li>
+            <%= link_to edit_user_path(current_user) do %>
+              Edit profile
+            <% end %>
+          </li>
         <% end %>
         <li>
           <%= link_to logout_path, method: "delete" do %>
-            Log out</a>
+            Log out
           <% end %>
         </li>
       </ul>
