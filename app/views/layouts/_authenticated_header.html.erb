@@ -12,13 +12,13 @@
       <ul class="nav navbar-nav navbar-right">
         <% if !session[:user_id] %>
           <li>
-            <%= link_to users_path do %>
+            <%= link_to users_path, :class => cp(users_path) do %>
               All users
             <% end %>
           </li>
         <% end %>
         <li>
-          <%= link_to transactions_path do %>
+          <%= link_to transactions_path, :class => cp(transactions_path) do %>
             <% if session[:user_id] %> My transactions
             <% else %> Transactions
             <% end %>
@@ -48,12 +48,12 @@
         <% end %>
         <% if session[:user_id] %>
           <li>
-            <%= link_to schedulePickup_path do %>
+            <%= link_to schedulePickup_path, :class => cp(schedulePickup_path) do %>
               Schedule a pickup
             <% end %>
           </li>
           <li>
-            <%= link_to edit_user_path(current_user) do %>
+            <%= link_to edit_user_path(current_user), :class => cp(edit_user_path(current_user)) do %>
               Edit profile
             <% end %>
           </li>

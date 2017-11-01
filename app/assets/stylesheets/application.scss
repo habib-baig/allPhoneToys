@@ -72,6 +72,11 @@ select, input {
   background-color: transparent;
 }
 
+.navbar li a.current {
+  background-color: #ffb204;
+  color: #181818;
+}
+
 .orange-button {
   background-color: #2d2d2d;
   height: 40px;
