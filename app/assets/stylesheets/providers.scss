@@ -1,0 +1,21 @@
+// Place all the styles related to the Providers controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+span.delete-provider {
+  font-family: sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  color: #181818;
+  background: #ffb204;
+  border-radius: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 2px;
+  padding-bottom: 3px;
+}
+
+#provider-form {
+  margin: auto;
+  float: none;
+  text-align: left;
+}

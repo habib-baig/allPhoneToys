@@ -1,0 +1,20 @@
+<%= form_with(model: provider, local: true, class: 'col-lg-5', id: 'provider-form') do |form| %>
+  <% if provider.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(provider.errors.count, "error") %> prohibited this provider from being saved:</h2>
+
+      <ul>
+      <% provider.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field form-group">
+    <%= form.text_field :provider, id: :provider_provider, class: 'form-control', placeholder: 'Provider' %>
+  </div>
+  <div class="actions form-group">
+    <%= form.submit "Add Provider",  :class=>'btn col-lg-12 orange-button' %>
+  </div>
+<% end %>
