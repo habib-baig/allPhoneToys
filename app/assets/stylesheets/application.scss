@@ -21,11 +21,24 @@
 body, html {
   height: 95%;
   display: grid;
-  background: #eee;
+  background: #181818;
+  color: white;
 }
 
 textarea {
   resize: none;
+}
+
+a, a:hover, a:focus {
+  color: #ffb204;
+}
+
+select {
+  color: black;
+}
+
+.form-control {
+  font-family: 'Saira', sans-serif;
 }
 
 .form-group {
@@ -37,21 +50,31 @@ textarea {
 }
 
 .navbar-brand {
-  font-family: 'Pacifico', cursive;
+  font-family: 'Electrolize', sans-serif;
   font-size: 40px;
 }
 
 .navbar-right a {
-  font-family: 'Pacifico', cursive;
+  font-family: 'Saira', sans-serif;
   font-size: 20px;
 }
 
+.nav > li > a:hover {
+  background-color: transparent;
+}
+
 .orange-button {
+  background-color: #2d2d2d;
   height: 40px;
   font-size: 20px;
-  font-family: 'Pacifico', cursive;
+  font-family: 'Saira', sans-serif;
   padding-top: 0px;
-  color: white;
+  color: #ffb204;
+}
+
+.orange-button:hover, .orange-button:focus {
+  background-color: #2d2d2d;
+  color: #ffb204;
 }
 
 .form-control {

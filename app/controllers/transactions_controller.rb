@@ -18,8 +18,8 @@ class TransactionsController < ApplicationController
     session[:trans_rechargedDT            ] = params[:rechargedDT               ]
     session[:trans_remarks                ] = params[:remarks                   ]
 
-    if params[:id]
-      @transactions = Transaction.where(user_id: params[:id])
+    if session[:user_id]
+      @transactions = Transaction.where(user_id: session[:user_id])
     else
       @transactions = Transaction.where(nil) # creates an anonymous scope
     end
@@ -46,7 +46,7 @@ class TransactionsController < ApplicationController
   # GET /transactions/new
   def new
     @transaction = Transaction.new
-    @current_user = User.find(session[:user_id])
+    @current_user = session[:user_id] ? User.find(session[:user_id]) : User.new
     @providers = Provider.find_by_sql("SELECT * FROM providers")
     @locations = Location.find_by_sql("SELECT * FROM locations")
   end

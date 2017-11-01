@@ -10,9 +10,36 @@
     </div>
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
+        <% if !session[:user_id] %>
+        <li>
+          <%= link_to users_path do %>
+            All users</a>
+          <% end %>
+        </li>
+        <% end %>
+        <li>
+          <%= link_to transactions_path do %>
+            <% if session[:user_id] %> My transactions
+            <% else %> All transactions
+            <% end %>
+          </a>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to schedulePickup_path do %>
+            Schedule a pickup</a>
+          <% end %>
+        </li>
+        <% if session[:user_id] %>
+        <li>
+          <%= link_to edit_user_path(current_user) do %>
+            Edit profile</a>
+          <% end %>
+        </li>
+        <% end %>
         <li>
           <%= link_to logout_path, method: "delete" do %>
-            <span class="glyphicon glyphicon-user"></span> Log out</a>
+            Log out</a>
           <% end %>
         </li>
       </ul>
