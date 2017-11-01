@@ -1,5 +1,11 @@
 <p id="notice"><%= notice %></p>
 
+<div class="col-lg-12 text-right">
+  <%= link_to schedulePickup_path do %>
+    <span class="new-transaction">+</span></a>
+  <% end %>
+</div>
+
 <%= form_with(url: transaction_index_path, local: true) do |form| %>
 
     <table>

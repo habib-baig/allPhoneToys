@@ -31,20 +31,28 @@
             Pickups</a>
           <% end %>
         </li>
-        <% end %>
-        <% if !session[:user_id] %>
         <li>
           <%= link_to "#" do %>
             Recharges</a>
           <% end %>
         </li>
+        <li>
+          <%= link_to "#" do %>
+            Locations</a>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to "#" do %>
+            Providers</a>
+          <% end %>
+        </li>
         <% end %>
+        <% if session[:user_id] %>
         <li>
           <%= link_to schedulePickup_path do %>
             Schedule a pickup</a>
           <% end %>
         </li>
-        <% if session[:user_id] %>
         <li>
           <%= link_to edit_user_path(current_user) do %>
             Edit profile</a>
