@@ -20,11 +20,25 @@
         <li>
           <%= link_to transactions_path do %>
             <% if session[:user_id] %> My transactions
-            <% else %> All transactions
+            <% else %> Transactions
             <% end %>
           </a>
           <% end %>
         </li>
+        <% if !session[:user_id] %>
+        <li>
+          <%= link_to "#" do %>
+            Pickups</a>
+          <% end %>
+        </li>
+        <% end %>
+        <% if !session[:user_id] %>
+        <li>
+          <%= link_to "#" do %>
+            Recharges</a>
+          <% end %>
+        </li>
+        <% end %>
         <li>
           <%= link_to schedulePickup_path do %>
             Schedule a pickup</a>

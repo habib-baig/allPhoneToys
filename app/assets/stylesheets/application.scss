@@ -37,6 +37,15 @@ select {
   color: black;
 }
 
+.table-striped > tbody > tr:nth-of-type(odd) {
+  background-color: #2d2d2d;
+}
+
+.table th, .table td {
+    border-top: none !important;
+    border-left: none !important;
+}
+
 .form-control {
   font-family: 'Saira', sans-serif;
 }
