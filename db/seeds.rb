@@ -9,6 +9,8 @@
 User.delete_all
 Admin.delete_all
 Transaction.delete_all
+Location.delete_all
+Provider.delete_all
 
 u=User.new
 u.name="jibin"
@@ -125,5 +127,33 @@ t.status=1
 t.user=u
 t.save
 
-Admin.create(name:'shaik' ,email: 'shaik@gmail.com',password: 'shaik')
+l=Location.new
+l.location="College Main"
+l.save
 
+l=Location.new
+l.location="Cherry Hollows"
+l.save
+
+l=Location.new
+l.location="Gardens"
+l.save
+
+l=Location.new
+l.location="Scandia"
+l.save
+
+
+n=Provider.new
+n.provider="Lyca"
+n.save
+
+n=Provider.new
+n.provider="T mobile"
+n.save
+
+n=Provider.new
+n.provider="Verizon"
+n.save
+
+Admin.create(name:'shaik' ,email: 'shaik@gmail.com',password: 'shaik')

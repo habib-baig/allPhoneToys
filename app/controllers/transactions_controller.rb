@@ -18,7 +18,16 @@ class TransactionsController < ApplicationController
     session[:trans_rechargedDT            ] = params[:rechargedDT               ]
     session[:trans_remarks                ] = params[:remarks                   ]
 
-    @transactions = Transaction.where(nil) # creates an anonymous scope
+    if !session[:user_id] && params[:filter] == "pickups"
+      @transactions = Transaction.where("DATE(scheduledPickupStartDT) = ?", Date.today)
+    elsif !session[:user_id] && params[:filter] == "recharges"
+      @transactions = Transaction.where("DATE(rechargeDueDT) = ?", Date.today)
+    elsif session[:user_id]
+      @transactions = Transaction.where(user_id: session[:user_id])
+    else
+      @transactions = Transaction.where(nil)
+    end
+
     @transactions = @transactions.trans_user_name(session[:trans_user_name])  if session[:trans_user_name].present?
     @transactions = @transactions.trans_amount(session[:trans_amount]) if session[:trans_amount].present?
     @transactions = @transactions.trans_phoneNumber(session[:trans_phoneNumber]) if session[:trans_phoneNumber].present?
@@ -42,7 +51,9 @@ class TransactionsController < ApplicationController
   # GET /transactions/new
   def new
     @transaction = Transaction.new
-    @current_user = User.find(session[:user_id])
+    @current_user = session[:user_id] ? User.find(session[:user_id]) : User.new
+    @providers = Provider.find_by_sql("SELECT * FROM providers")
+    @locations = Location.find_by_sql("SELECT * FROM locations")
   end
 
   # GET /transactions/1/edit

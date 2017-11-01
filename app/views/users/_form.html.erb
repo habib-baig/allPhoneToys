@@ -33,20 +33,18 @@
     </div>
 
     <div class="field form-group-condensed">
-      <select name="preferredProvider" id="user_prefProvider">
-      <%= form.select :prefProvider, options_for_select(User.prefProviders.map {|k, v| [k.humanize.capitalize, k]}, @user.prefProvider), {prompt: 'Select your preferred service provider'}, {class:'form-control'}  %>
+      <%= form.select :prefProvider, options_for_select(@providers.map { |obj| [obj['provider'], obj['id']] }, @user.prefProvider), {prompt: 'Select your preferred service provider'}, {class:'form-control'}  %>
     </div>
 
     <div class="field form-group">
-      <select name="preferredLocation" id="user_prefLocation">
-      <%= form.select :prefLocation, options_for_select(User.prefLocations.map {|k, v| [k.humanize.capitalize, k]}, @user.prefLocation), {prompt: 'Select your preferred pickup location'}, {class:'form-control'}  %>
+      <%= form.select :prefLocation, options_for_select(@locations.map { |obj| [obj['location'], obj['id']] }, @user.prefLocation), {prompt: 'Select your preferred pickup location'}, {class:'form-control'}  %>
     </div>
 
     <div class="actions">
       <% if !current_user %>
-        <%= form.submit "Sign Up",  :class=>'btn btn-primary col-lg-12 orange-button' %>
+        <%= form.submit "Sign Up",  :class=>'btn col-lg-12 orange-button' %>
       <% else %>
-        <%= form.submit "Save",  :class=>'btn btn-primary col-lg-12 orange-button' %>
+        <%= form.submit "Save",  :class=>'btn col-lg-12 orange-button' %>
       <% end %>
     </div>
 

@@ -1,7 +1,4 @@
 
-<h1>Users</h1>
-
-
 <% if false %>
 
 <%= form_with(url: user_index_path, local: true) do |form| %>
@@ -43,7 +40,7 @@
 
 <% end %>
 
-<table class="table">
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Name</th>
@@ -52,7 +49,6 @@
       <th>Preferred Amount</th>
       <th>Preferred Provider</th>
       <th>Preferred location</th>
-      <th colspan="3"></th>
     </tr>
   </thead>
 
@@ -70,7 +66,4 @@
   </tbody>
 </table>
 
-<%= link_to 'Back', adminDashboard_path %>
-
 <br>
-
