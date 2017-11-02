@@ -19,9 +19,9 @@ class TransactionsController < ApplicationController
     session[:trans_remarks                ] = params[:remarks                   ]
 
     if !session[:user_id] && params[:filter] == "pickups"
-      @transactions = Transaction.where("DATE(scheduledPickupStartDT) = ?", Date.today)
+      @transactions = Transaction.where("DATE(\"scheduledPickupStartDT\") = ?", Date.today)
     elsif !session[:user_id] && params[:filter] == "recharges"
-      @transactions = Transaction.where("DATE(rechargeDueDT) = ?", Date.today)
+      @transactions = Transaction.where("DATE(\"rechargeDueDT\") = ?", Date.today)
     elsif session[:user_id]
       @transactions = Transaction.where(user_id: session[:user_id])
     else
