@@ -44,7 +44,7 @@ When /^(?:|I )fill in "([^"]*)" with "([^"]*)"$/ do |field, value|
 end
 
 And /^I fill in the select field "([^"]*)" with "([^"]*)"$/ do |field, value|
-  select value, :from => field
+  select value, from: field, visible: false
 end
 
 When /^(?:|I )follow "([^"]*)"$/ do |link|
