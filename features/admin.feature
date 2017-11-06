@@ -1,7 +1,6 @@
 Feature: Admin login
   Create a new admin
-  Log in as admin
-  Schedule a pickup
+  Log in as admin successfully
 
   Background:
     Given I am on the admins create page
