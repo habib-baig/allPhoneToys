@@ -16,6 +16,10 @@ module NavigationHelpers
       '/login'
     when /^the signup page$/
       '/users/new'
+    when /^the admins create page$/
+      '/admins'
+    when /^the admin dashboard page$/
+      '/adminDashboard'
     else
       begin
         page_name =~ /^the (.*) page$/

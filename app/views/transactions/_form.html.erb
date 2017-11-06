@@ -28,11 +28,13 @@
   </div>
 
   <div class="field form-group">
-    <%= form.datetime_select :scheduledPickupStartDT, id: :transaction_scheduledPickupStartDT, class: 'form-control' %>
+    <label for="scheduledPickupStartDT">scheduledPickupStartDT</label>
+    <%= form.datetime_select label 'scheduledPickupStartDT', :scheduledPickupStartDT, id: :transaction_scheduledPickupStartDT, class: 'form-control', label: 'scheduledPickupStartDT' %>
   </div>
 
   <div class="field form-group">
-    <%= form.datetime_select :scheduledPickupEndDT, id: :transaction_scheduledPickupEndDT, class: 'form-control' %>
+    <label for="scheduledPickupEndDT">scheduledPickupEndDT</label>
+    <%= form.datetime_select :scheduledPickupEndDT, id: :transaction_scheduledPickupEndDT, class: 'form-control', disabled: 'true' %>
   </div>
 
   <div class="field form-group">
