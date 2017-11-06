@@ -20,19 +20,23 @@
   </div>
 
   <div class="field form-group">
+    <select name="preferredProvider" id="user_prefProvider">
     <%= form.select :provider, options_for_select(Transaction.providers.map {|k, v| [k.humanize.capitalize, k]}, @current_user.prefProvider), {prompt: 'Select your service provider'}, {id: :transaction_provider, class: 'form-control'} %>
   </div>
 
   <div class="field form-group">
+    <select name="preferredLocation" id="user_prefLocation">
     <%= form.select :provider, options_for_select(Transaction.locations.map {|k, v| [k.humanize.capitalize, k]}, @current_user.prefLocation), {prompt: 'Select location'}, {id: :transaction_location, class: 'form-control'} %>
   </div>
 
   <div class="field form-group">
-    <%= form.datetime_select :scheduledPickupStartDT, id: :transaction_scheduledPickupStartDT, class: 'form-control' %>
+    <label for="scheduledPickupStartDT">scheduledPickupStartDT</label>
+    <%= form.datetime_select label 'scheduledPickupStartDT', :scheduledPickupStartDT, id: :transaction_scheduledPickupStartDT, class: 'form-control', label: 'scheduledPickupStartDT' %>
   </div>
 
   <div class="field form-group">
-    <%= form.datetime_select :scheduledPickupEndDT, id: :transaction_scheduledPickupEndDT, class: 'form-control' %>
+    <label for="scheduledPickupEndDT">scheduledPickupEndDT</label>
+    <%= form.datetime_select :scheduledPickupEndDT, id: :transaction_scheduledPickupEndDT, class: 'form-control', disabled: 'true' %>
   </div>
 
   <div class="field form-group">

@@ -25,7 +25,6 @@ Given /^I am signed in$/ do
 end
 
 Given /^I am signed in as an admin$/ do
-  visit '/'
   fill_in 'email', :with => 'shaik@gmail.com'
   fill_in 'password', :with => 'shaik'
   click_button 'Log in'
@@ -54,6 +53,16 @@ end
 
 When /^(?:|I )press "([^"]*)"$/ do |button|
   click_button(button)
+end
+
+When(/^I select the time (\d+)\-(\d+)\-(\d+) (\d+):(\d+) from "(.*?)"$/) do |year, month, day, hour, minute, label_text|
+  label = page.find('label', text: label_text)
+  id = label['for']
+  select year,   from: "#{id}_1i", visible: false
+  select month,  from: "#{id}_2i", visible: false
+  select day,    from: "#{id}_3i", visible: false
+  select hour,   from: "#{id}_4i", visible: false
+  select minute, from: "#{id}_5i", visible: false
 end
 
 Then /^(?:|I )should see "([^"]*)"$/ do |text|
