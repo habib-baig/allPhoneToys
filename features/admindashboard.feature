@@ -6,6 +6,7 @@ Feature: Admin dashboard
   View Locations list
   View Providers list
   Log out successfully
+  Redirect AllPhoneToys label to the same page
 
   Background:
     Given I am on the admins create page
@@ -70,3 +71,9 @@ Feature: Admin dashboard
     When I follow "Log out"
     Then I am on the login page
     And I should see "Don't have an account?"
+
+  Scenario: Redirect AllPhoneToys label to the same page
+    When I follow "All Phone Toys"
+    Then I am on the admin dashboard page
+    And I should see "Admin Dashboard"
+    
