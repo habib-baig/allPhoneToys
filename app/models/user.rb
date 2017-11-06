@@ -14,9 +14,6 @@ class User < ApplicationRecord
             format: { with: VALID_EMAIL_REGEX }
   validates :phone, numericality: { only_integer: true, greater_than_or_equal_to: 1000000000 }, length: { is: 10 }
 
-  enum prefProvider: { Lyca: 1 , T_My_Mobile: 2 ,Verizon: 3 }
-  enum prefLocation: { College_Main: 1 , Cherry_Hollows: 2 , Gardens: 3 , Scandia: 4 }
-
   def passwordMatches(enteredPassword)
     enteredPassword.eql?self.password
   end

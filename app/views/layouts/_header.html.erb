@@ -11,13 +11,13 @@
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <%= link_to new_user_path do %>
-            <span class="glyphicon glyphicon-user"></span> Sign Up</a>
+          <%= link_to new_user_path, :class => cp(new_user_path) do %>
+            <span class="glyphicon glyphicon-user"></span> Sign Up
           <% end %>
         </li>
         <li>
-          <%= link_to login_path do %>
-            <span class="glyphicon glyphicon-log-in"></span> Log in</a>
+          <%= link_to login_path, :class => cp(login_path) do %>
+            <span class="glyphicon glyphicon-log-in"></span> Log in
           <% end %>
         </li>
       </ul>
