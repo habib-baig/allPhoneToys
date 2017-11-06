@@ -25,8 +25,8 @@ Given /^I am signed in$/ do
 end
 
 Given /^I am signed in as an admin$/ do
-  fill_in 'email', :with => 'shaik@gmail.com'
-  fill_in 'password', :with => 'shaik'
+  fill_in 'email', :with => 'shaik@gmail.com', visible: false
+  fill_in 'password', :with => 'shaik123', visible: false
   click_button 'Log in'
 end
 
