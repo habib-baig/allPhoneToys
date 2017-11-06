@@ -20,13 +20,11 @@
   </div>
 
   <div class="field form-group">
-    <select name="preferredProvider" id="user_prefProvider">
-    <%= form.select :provider, options_for_select(Transaction.providers.map {|k, v| [k.humanize.capitalize, k]}, @current_user.prefProvider), {prompt: 'Select your service provider'}, {id: :transaction_provider, class: 'form-control'} %>
+    <%= form.select :provider, options_for_select(@providers.map { |obj| [obj['provider'], obj['id']] }, @current_user.prefProvider), {prompt: 'Select your service provider'}, {id: :transaction_provider, class: 'form-control'} %>
   </div>
 
   <div class="field form-group">
-    <select name="preferredLocation" id="user_prefLocation">
-    <%= form.select :provider, options_for_select(Transaction.locations.map {|k, v| [k.humanize.capitalize, k]}, @current_user.prefLocation), {prompt: 'Select location'}, {id: :transaction_location, class: 'form-control'} %>
+    <%= form.select :location, options_for_select(@locations.map { |obj| [obj['location'], obj['id']] }, @current_user.prefLocation), {prompt: 'Select location'}, {id: :transaction_location, class: 'form-control'} %>
   </div>
 
   <div class="field form-group">
@@ -40,10 +38,14 @@
   </div>
 
   <div class="field form-group">
+    <%= form.datetime_select :rechargeDueDT, id: :transaction_rechargeDueDT, class: 'form-control' %>
+  </div>
+
+  <div class="field form-group">
     <%= form.text_area :remarks, id: :transaction_remarks, class: 'form-control', placeholder: 'Any comments/remarks...', rows: '4', cols: "30" %>
   </div>
 
   <div class="actions form-group">
-    <%= form.submit "Schedule",  :class=>'btn btn-primary col-lg-12 orange-button' %>
+    <%= form.submit "Schedule",  :class=>'btn col-lg-12 orange-button' %>
   </div>
 <% end %>

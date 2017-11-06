@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     @users = @users.user_pref_provider(session[:user_pref_provider]) if session[:user_pref_provider].present?
     @users = @users.user_pref_location(session[:user_pref_location]) if session[:user_pref_location].present?
 
-    
+
   end
 
   # GET /users/1
@@ -32,11 +32,15 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
+    @providers = Provider.find_by_sql("SELECT * FROM providers")
+    @locations = Location.find_by_sql("SELECT * FROM locations")
   end
 
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
+    @providers = Provider.find_by_sql("SELECT * FROM providers")
+    @locations = Location.find_by_sql("SELECT * FROM locations")
   end
 
   # POST /users
@@ -90,6 +94,3 @@ class UsersController < ApplicationController
       params.require(:user).permit(:name, :email, :phone, :password, :prefProvider, :prefAmount, :prefLocation)
     end
 end
-
-
-

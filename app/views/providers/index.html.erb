@@ -1,0 +1,30 @@
+<div class="col-lg-12 text-right">
+  <%= link_to new_provider_path do %>
+    <span class="new-transaction">+</span></a>
+  <% end %>
+
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Provider ID</th>
+      <th>Provider</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @providers.each do |provider| %>
+      <tr>
+        <td><%= provider.id%></td>
+        <td><%= provider.provider %></td>
+        <td>
+          <%= link_to deleteProvider_path(provider), method: "delete" do %>
+            <span class="delete-provider">x</span>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

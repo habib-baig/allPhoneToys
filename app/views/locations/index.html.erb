@@ -1,0 +1,29 @@
+<div class="col-lg-12 text-right">
+  <%= link_to new_location_path do %>
+    <span class="new-transaction">+</span></a>
+  <% end %>
+</div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Location ID</th>
+      <th>Location</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @locations.each do |location| %>
+      <tr>
+        <td><%= location.id%></td>
+        <td><%= location.location %></td>
+        <td>
+          <%= link_to deleteLocation_path(location), method: "delete" do %>
+            <span class="delete-location">x</span>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

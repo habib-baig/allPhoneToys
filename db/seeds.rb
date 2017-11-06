@@ -9,6 +9,8 @@
 User.delete_all
 Admin.delete_all
 Transaction.delete_all
+Location.delete_all
+Provider.delete_all
 
 u=User.new
 u.name="jibin"
@@ -20,6 +22,24 @@ u.prefLocation=3
 u.prefProvider=1
 u.save
 
+t=Transaction.new
+t.amount=19
+t.phoneNumber=1234567890
+t.provider=1
+t.location=3
+t.status=2
+t.user=u
+t.save
+
+t=Transaction.new
+t.amount=45
+t.phoneNumber=1234567890
+t.provider=1
+t.location=3
+t.status=1
+t.user=u
+t.save
+
 u=User.new
 u.name="christopher"
 u.password="christopher"
@@ -29,6 +49,15 @@ u.prefAmount="23"
 u.prefLocation=3
 u.prefProvider=1
 u.save
+
+t=Transaction.new
+t.amount=23
+t.phoneNumber=1234567891
+t.provider=1
+t.location=3
+t.status=2
+t.user=u
+t.save
 
 u=User.new
 u.name="kavya"
@@ -40,6 +69,15 @@ u.prefLocation=1
 u.prefProvider=3
 u.save
 
+t=Transaction.new
+t.amount=26
+t.phoneNumber=1234567892
+t.provider=3
+t.location=1
+t.status=3
+t.user=u
+t.save
+
 u=User.new
 u.name="vivek"
 u.password="vivek"
@@ -49,6 +87,25 @@ u.prefAmount="45"
 u.prefLocation=1
 u.prefProvider=3
 u.save
+
+t=Transaction.new
+t.amount=45
+t.phoneNumber=1234567893
+t.provider=3
+t.location=1
+t.status=3
+t.user=u
+t.save
+
+t=Transaction.new
+t.amount=100
+t.phoneNumber=1234567893
+t.provider=3
+t.location=1
+t.status=1
+t.user=u
+t.save
+
 
 u=User.new
 u.name="habib"
@@ -60,8 +117,9 @@ u.prefLocation=1
 u.prefProvider=2
 u.save
 
+
 t=Transaction.new
-t.amount=32
+t.amount=45
 t.phoneNumber=1234567894
 t.provider=2
 t.location=1
@@ -69,5 +127,33 @@ t.status=1
 t.user=u
 t.save
 
-Admin.create(name:'shaik' ,email: 'shaik@gmail.com',password: 'shaik')
+l=Location.new
+l.location="College Main"
+l.save
 
+l=Location.new
+l.location="Cherry Hollows"
+l.save
+
+l=Location.new
+l.location="Gardens"
+l.save
+
+l=Location.new
+l.location="Scandia"
+l.save
+
+
+n=Provider.new
+n.provider="Lyca"
+n.save
+
+n=Provider.new
+n.provider="T mobile"
+n.save
+
+n=Provider.new
+n.provider="Verizon"
+n.save
+
+Admin.create(name:'shaik' ,email: 'shaik@gmail.com',password: 'shaik')
