@@ -26,13 +26,13 @@
         </li>
         <% if !session[:user_id] %>
           <li class="pickups">
-            <%= link_to transactions_path(:filter => 'pickups'), :class => cp_transactions(transactions_path) do %>
-              Pickups
+            <%= link_to todaysPickups_path, :class => cp(todaysPickups_path) do %>
+              Today's Pickups
             <% end %>
           </li>
           <li class="recharges">
-            <%= link_to transactions_path(:filter => 'recharges'), :class => cp_transactions(transactions_path) do %>
-              Recharges
+            <%= link_to todaysRecharges_path, :class => cp(todaysRecharges_path) do %>
+              Today's Recharges
             <% end %>
           </li>
           <li>

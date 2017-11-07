@@ -13,6 +13,10 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
   get '/adminDashboard', to: 'admins#dashboard'
+  get '/todaysPickups', to: 'transactions#todays_pickups'
+  delete '/todaysPickups/:id', to: 'transactions#do_pickup', as: 'do_pickup'
+  get '/todaysRecharges', to: 'transactions#todays_recharges'
+  delete '/todaysRecharges/:id', to: 'transactions#do_recharge', as: 'do_recharge'
   post   '/',   to: 'transactions#index', as: 'transaction_index'
 
   get '/locations', to: 'locations#index'

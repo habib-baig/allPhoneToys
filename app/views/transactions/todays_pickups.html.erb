@@ -1,0 +1,67 @@
+<div class="col-lg-12 text-right">
+  <%= link_to schedulePickup_path do %>
+      <span class="new-transaction">+</span>
+  <% end %>
+</div>
+
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Name</th>
+    <th>Amount</th>
+    <th>Phonenumber</th>
+    <th>Provider</th>
+    <th>Location</th>
+    <th>Status</th>
+
+    <% if false %>
+        <th>Scheduledpickupstartdt</th>
+        <th>Scheduledpickupenddt</th>
+        <th>Messagedpickupdt</th>
+        <th>Pickedupdt</th>
+        <th>Rechargeduedt</th>
+        <th>Rechargeddt</th>
+        <th>Remarks</th>
+        <th colspan="3"></th>
+    <% end %>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @transactions.each do |transaction| %>
+      <% if transaction.status==1 %>
+          <tr style="color:white">
+      <% elsif transaction.status==2 %>
+              <tr style="color:black">
+      <% else %>
+      <tr>
+          <% end %>
+
+        <td><%= transaction.user.name%></td>
+        <td><%= transaction.amount %></td>
+       <td><%= transaction.phoneNumber %></td>
+        <td><%= transaction.provider %></td>
+        <td><%= transaction.location %></td>
+        <td><%= transaction.status %></td>
+        <td>
+          <%= link_to do_pickup_path(transaction), method: "delete" do %>
+              <span class="delete-provider">x</span>
+          <% end %>
+        </td>
+        <% if false %>
+            <td><%= transaction.scheduledPickupStartDT %></td>
+            <td><%= transaction.scheduledPickupEndDT %></td>
+            <td><%= transaction.messagedPickupDT %></td>
+            <td><%= transaction.pickedUpDT %></td>
+            <td><%= transaction.rechargeDueDT %></td>
+            <td><%= transaction.rechargedDT %></td>
+            <td><%= transaction.remarks %></td>
+        <% end %>
+
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
