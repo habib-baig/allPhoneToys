@@ -14,7 +14,9 @@ class Transaction < ApplicationRecord
   scope :trans_pickedUpDT                , -> (pickedUpDT                      ) { where "pickedUpDT                   = ?", pickedUpDT                   }
   scope :trans_rechargeDueDT             , -> (rechargeDueDT                   ) { where "rechargeDueDT                = ?", rechargeDueDT                }
   scope :trans_rechargedDT               , -> (rechargedDT                     ) { where "rechargedDT                  = ?", rechargedDT                  }
-  scope :trans_remarks                   , -> (remarks                         ) { where "remarks                      = ?", remarks                      }
+  scope :trans_remarks                   , -> (remarks                         ) { where "remarks                      = ?", remarks}
+  scope :trans_status_pickups                   , -> (                         ) { where "status                      = ? or status = ?",1,2 }
+  scope :trans_status_recharges                   , -> (                         ) { where "status                      = ? or status = ?",2,3 }
 
 
 end

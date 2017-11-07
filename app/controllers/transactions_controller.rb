@@ -4,29 +4,24 @@ class TransactionsController < ApplicationController
   # GET /transactions
   # GET /transactions.json
   def index
-    session[:trans_user_name              ] = params[:name                      ]
-    session[:trans_amount                 ] = params[:amount                    ]
-    session[:trans_phoneNumber            ] = params[:phoneNumber               ]
-    session[:trans_provider               ] = params[:provider                  ]
-    session[:trans_location               ] = params[:location                  ]
-    session[:trans_status                 ] = params[:status                    ]
-    session[:trans_scheduledPickupStartDT ] = params[:scheduledPickupStartDT    ]
-    session[:trans_scheduledPickupEndDT   ] = params[:scheduledPickupEndDT      ]
-    session[:trans_messagedPickupDT       ] = params[:messagedPickupDT          ]
-    session[:trans_pickedUpDT             ] = params[:pickedUpDT                ]
-    session[:trans_rechargeDueDT          ] = params[:rechargeDueDT             ]
-    session[:trans_rechargedDT            ] = params[:rechargedDT               ]
-    session[:trans_remarks                ] = params[:remarks                   ]
-
-    if !session[:user_id] && params[:filter] == "pickups"
-      @transactions = Transaction.where("DATE(\"scheduledPickupStartDT\") = ?", Date.today)
-    elsif !session[:user_id] && params[:filter] == "recharges"
-      @transactions = Transaction.where("DATE(\"rechargeDueDT\") = ?", Date.today)
-    elsif session[:user_id]
+   if session[:user_id]
       @transactions = Transaction.where(user_id: session[:user_id])
-    else
+   else
       @transactions = Transaction.where(nil)
-    end
+   end
+   session[:trans_user_name              ] = params[:name                      ]
+   session[:trans_amount                 ] = params[:amount                    ]
+   session[:trans_phoneNumber            ] = params[:phoneNumber               ]
+   session[:trans_provider               ] = params[:provider                  ]
+   session[:trans_location               ] = params[:location                  ]
+   session[:trans_status                 ] = params[:status                    ]
+   session[:trans_scheduledPickupStartDT ] = params[:scheduledPickupStartDT    ]
+   session[:trans_scheduledPickupEndDT   ] = params[:scheduledPickupEndDT      ]
+   session[:trans_messagedPickupDT       ] = params[:messagedPickupDT          ]
+   session[:trans_pickedUpDT             ] = params[:pickedUpDT                ]
+   session[:trans_rechargeDueDT          ] = params[:rechargeDueDT             ]
+   session[:trans_rechargedDT            ] = params[:rechargedDT               ]
+   session[:trans_remarks                ] = params[:remarks                   ]
 
     @transactions = @transactions.trans_user_name(session[:trans_user_name])  if session[:trans_user_name].present?
     @transactions = @transactions.trans_amount(session[:trans_amount]) if session[:trans_amount].present?
@@ -41,6 +36,16 @@ class TransactionsController < ApplicationController
     @transactions = @transactions.trans_rechargedDT(session[:trans_rechargedDT]) if session[:trans_rechargedDT].present?
     @transactions = @transactions.trans_remarks(session[:trans_remarks]) if session[:trans_remarks].present?
 
+  end
+
+  def todays_pickups
+    @transactions = Transaction.where("DATE(\"scheduledPickupStartDT\") = ?", Date.today) #Filter only transactions to be picked up today
+    @transactions = @transactions.trans_status_pickups() #Filter only transactions with status =1 or 2
+  end
+
+  def todays_recharges
+    @transactions = Transaction.where("DATE(\"rechargeDueDT\") = ?", Date.today)#filter only transactions to be recharged today
+    @transactions = @transactions.trans_status_recharges() #Filter only transactions with status =2 or 3
   end
 
   # GET /transactions/1
@@ -65,6 +70,8 @@ class TransactionsController < ApplicationController
   def create
     @transaction = Transaction.new(transaction_params)
     @transaction.update(user_id: session[:user_id])
+    @transaction.update(status: 1)
+
 
     respond_to do |format|
       if @transaction.save
@@ -99,6 +106,28 @@ class TransactionsController < ApplicationController
       format.html { redirect_to transactions_url, notice: 'Transaction was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def do_pickup
+    transaction = Transaction.find(params[:id])
+    if (transaction.status == 1)
+      transaction.status=2 #status=picked up
+    elsif (transaction.status == 2)
+      transaction.status = 1
+    end
+    transaction.save
+    redirect_back fallback_location: root_path
+  end
+
+  def do_recharge
+    transaction = Transaction.find(params[:id])
+    if (transaction.status == 2)
+      transaction.status=3 #status=recharged
+    elsif (transaction.status == 3)
+      transaction.status = 2
+    end
+    transaction.save
+    redirect_back fallback_location: root_path
   end
 
   private
