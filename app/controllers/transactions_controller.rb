@@ -1,5 +1,6 @@
 class TransactionsController < ApplicationController
   before_action :set_transaction, only: [:show, :edit, :update, :destroy]
+  before_action :admin_privacy, only: [:todays_pickups, :todays_recharges]
 
   # GET /transactions
   # GET /transactions.json

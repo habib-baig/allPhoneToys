@@ -1,5 +1,6 @@
 class AdminsController < ApplicationController
   before_action :set_admin, only: [:show, :edit, :update, :destroy]
+  before_action :admin_privacy, only: [:dashboard]
 
   # GET /admins
   # GET /admins.json
@@ -10,6 +11,9 @@ class AdminsController < ApplicationController
   # GET /admins/1
   # GET /admins/1.json
   def show
+  end
+
+  def dashboard
   end
 
   # GET /admins/new
