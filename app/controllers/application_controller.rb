@@ -14,6 +14,10 @@ class ApplicationController < ActionController::Base
   end
 
   def set_variables
+    @loggedin_user = User.new
+    if current_user
+      @loggedin_user = current_user
+    end
     @providers = Provider.find_by_sql("SELECT * FROM providers")
     @locations = Location.find_by_sql("SELECT * FROM locations")
   end

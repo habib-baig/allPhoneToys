@@ -1,14 +1,16 @@
 class TransactionsController < ApplicationController
   before_action :set_transaction, only: [:show, :edit, :update, :destroy]
-  before_action :require_admin, :admin_privacy, only: [:index, :todays_pickups, :todays_recharges]
+  before_action :require_admin, :admin_privacy, only: [:todays_pickups, :todays_recharges]
 
   # GET /transactions
   # GET /transactions.json
   def index
    if session[:user_id]
       @transactions = Transaction.where(user_id: session[:user_id])
-   else
+   elsif session[:admin_id]
       @transactions = Transaction.where(nil)
+   else
+      redirect_to login_path
    end
    session[:trans_user_name              ] = params[:name                      ]
    session[:trans_amount                 ] = params[:amount                    ]
@@ -57,9 +59,6 @@ class TransactionsController < ApplicationController
   # GET /transactions/new
   def new
     @transaction = Transaction.new
-    @current_user = session[:user_id] ? User.find(session[:user_id]) : User.new
-    @providers = Provider.find_by_sql("SELECT * FROM providers")
-    @locations = Location.find_by_sql("SELECT * FROM locations")
   end
 
   # GET /transactions/1/edit
