@@ -1,17 +1,15 @@
 class User < ApplicationRecord
   has_many :transactions
 
-  validates_uniqueness_of :email
-
   validates :name,  presence: true, length: { maximum: 50 }
 
   validates :password,  presence: true, length: { maximum: 50 }
 
   validates :prefAmount,numericality: { only_integer: true, less_than_or_equal_to:1000 }
 
-  VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
-  validates :email, presence: true, length: { maximum: 255 },
-            format: { with: VALID_EMAIL_REGEX }
+  validates :email, presence: true, uniqueness: true
+  validates_format_of :email, :with => Devise::email_regexp
+
   validates :phone, numericality: { only_integer: true, greater_than_or_equal_to: 1000000000 }, length: { is: 10 }
 
   def passwordMatches(enteredPassword)

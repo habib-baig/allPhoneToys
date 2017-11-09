@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
+  before_action :require_admin, only: [:index]
   before_action :require_user, :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :admin_privacy, only: [:index]
 
   # GET /users
   # GET /users.json
@@ -32,15 +34,11 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
-    @providers = Provider.find_by_sql("SELECT * FROM providers")
-    @locations = Location.find_by_sql("SELECT * FROM locations")
   end
 
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
-    @providers = Provider.find_by_sql("SELECT * FROM providers")
-    @locations = Location.find_by_sql("SELECT * FROM locations")
   end
 
   # POST /users

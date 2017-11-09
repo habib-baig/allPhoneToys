@@ -16,8 +16,11 @@
       <%= render "layouts/authenticated_header" %>
     <% end %>
     <div class="container">
-      <% flash.each do |message_type, message| %>
-            <%= message %>
+      <% if notice %>
+        <p class="alert alert-success"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert alert-danger"><%= alert %></p>
       <% end %>
       <%= yield %>
     </div>

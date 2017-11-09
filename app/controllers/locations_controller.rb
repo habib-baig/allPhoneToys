@@ -1,4 +1,5 @@
 class LocationsController < ApplicationController
+  before_action :require_admin, :admin_privacy, only: [:index, :new]
 
   def index
     @locations = Location.all;
