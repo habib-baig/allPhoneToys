@@ -33,15 +33,11 @@ class UsersController < ApplicationController
   # GET /users/new
   def new
     @user = User.new
-    @providers = Provider.find_by_sql("SELECT * FROM providers")
-    @locations = Location.find_by_sql("SELECT * FROM locations")
   end
 
   # GET /users/1/edit
   def edit
     @user = User.find(params[:id])
-    @providers = Provider.find_by_sql("SELECT * FROM providers")
-    @locations = Location.find_by_sql("SELECT * FROM locations")
   end
 
   # POST /users

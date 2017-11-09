@@ -1,8 +1,6 @@
-<%= form_with(model: user, local: true, class:'col-lg-5', id:'signup-form') do |form| %>
+<%= form_with(model: user, local: true, class:'col-lg-5', id:'signup-form', :html => {:novalidate => 'novalidate'}) do |form| %>
     <% if user.errors.any? %>
-        <div id="error_explanation">
-          <h2>Sorry, please correct the following <%= pluralize(user.errors.count, "error") %> to sign up</h2>
-
+        <div class="alert alert-danger">
           <ul>
             <% user.errors.full_messages.each do |message| %>
                 <li><%= message %></li>
