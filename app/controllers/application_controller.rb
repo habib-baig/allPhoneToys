@@ -9,6 +9,10 @@ class ApplicationController < ActionController::Base
     redirect_to '/login' unless current_user
   end
 
+  def require_admin
+    redirect_to '/login' unless current_admin
+  end
+
   def set_variables
     @providers = Provider.find_by_sql("SELECT * FROM providers")
     @locations = Location.find_by_sql("SELECT * FROM locations")

@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :require_admin, only: [:index]
   before_action :require_user, :set_user, only: [:show, :edit, :update, :destroy]
   before_action :admin_privacy, only: [:index]
 

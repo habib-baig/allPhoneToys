@@ -1,5 +1,5 @@
 class ProvidersController < ApplicationController
-  before_action :admin_privacy, only: [:index, :new]
+  before_action :require_admin, :admin_privacy, only: [:index, :new]
 
   def index
     @providers = Provider.all
