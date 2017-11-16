@@ -6,7 +6,7 @@ class UserMailer < ApplicationMailer
   #   en.user_mailer.password_reset.subject
   #
   def password_reset(user)
-    default from: "railscasts@example.com"
+    #default from: "habib1.baig@gmail.com"
     @user = user
     mail :to => user.email, :subject => "Password Reset"
   end

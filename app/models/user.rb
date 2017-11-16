@@ -22,7 +22,7 @@ class User < ApplicationRecord
   scope :user_pref_amount, -> (prefAmount) { where "prefAmount = ?", prefAmount }
   scope :user_pref_provider, -> (prefProvider) { where "prefProvider = ?", prefProvider }
   scope :user_pref_location, -> (prefLocation) { where "prefLocation = ?", prefLocation }
-  
+
   def send_password_reset
     generate_token(:password_reset_token)
     self.password_reset_sent_at = Time.zone.now
@@ -32,7 +32,7 @@ class User < ApplicationRecord
 
   def generate_token(column)
     begin
-    self[column] = SecureRandom.urlsafe_base64
+      self[column] = SecureRandom.urlsafe_base64
     end while User.exists?(column => self[column])
   end
 
